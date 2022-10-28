@@ -68,11 +68,11 @@ function parseStory(rawStory) {
  *
  * You'll want to use the results of parseStory() to display the story on the page.
  */
-///getRawStory()
- /// .then(parseStory)
- /// .then((processedStory) => {
- ///   console.log(processedStory);
- /// });
+getRawStory()
+  .then(parseStory)
+  .then((processedStory) => {
+    console.log(processedStory);
+  });
 
 
 
