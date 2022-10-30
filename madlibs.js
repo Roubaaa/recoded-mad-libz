@@ -68,16 +68,67 @@ function parseStory(rawStory) {
  *
  * You'll want to use the results of parseStory() to display the story on the page.
  */
-getRawStory()
-  .then(parseStory)
-  .then((processedStory) => {
-    console.log(processedStory);
-  });
+//getRawStory()
+//  .then(parseStory)
+//  .then((processedStory) => {
+//    console.log(processedStory);
+//  });
+
+  const story =`It is a scary[a] Halloween night. I have my ghost[n] costume on and I step outside to begin my adventurous[a] evening of trick or treating. I walked[v] down the street and rang[v] up to the first door. " trick[n] or treat" I said as the door began to open. " trick[n] or treat?" a woman[n] said on the other side of the door. "What does that mean?" "It means if you don't give me a treat I'll have to trick[v] you." she said as she agressively[a] closed[v] out the door and I walked[v] down the street. I only wanted a candy[n]!`;
+  function showStoryEditView(parsedStory){
+    // this function will recive an array of objects that contains the words with their pos as a parameter
+    //we will go throw each object and show it on HTML Page using p element, whenever we find an object with pos we will add input element
+    let editView = document.getElementById("madLibsEdit")
+    let preview = document.getElementById("madLibsPreview")
+
+    let counter = 1 // id for the verb, noun, adj
+    parsedStory.forEach(element => {
+      if(element["pos"] == "verb"){
+        const input = document.createElement("input")
+        const output = document.createElement("p")
+        input.placeholder = "verb"
+        output.textContent = "(verb)"
+        output.style.color = "gray"
+        editView.appendChild(input)
+        preview.appendChild(output)
+        input.oninput = function() {
+        output.textContent = input.value;
+        };
+      }
+      else if(element["pos"] == "noun"){
+        const input = document.createElement("input")
+        const output = document.createElement("p")
+        input.placeholder = "noun"
+        output.textContent = "(noun)"
+        output.style.color = "gray"
+        editView.appendChild(input)
+        preview.appendChild(output)
+        input.oninput = function() {
+        output.textContent = input.value;
+        };
+      }      
+      else if(element["pos"] == "adjective"){
+        const input = document.createElement("input")
+        const output = document.createElement("p")
+        input.placeholder = "adjective"
+        output.textContent = "(adjective)"
+        output.style.color = "gray"
+        editView.appendChild(input)
+        preview.appendChild(output)
+        input.oninput = function() {
+        output.textContent = input.value;
+        };
+      }
+      else{
+        const word = document.createElement("p")
+        const word2 = document.createElement("p")
+        word.textContent = element["word"]
+        word2.textContent = element["word"]
+        preview.appendChild(word2)
+        editView.appendChild(word)
+      }
+    });
+  }
 
 
-
-  const story =`It is a scary[a] Halloween night. I have my ghost[n] costume on and I step outside to begin my adventurous[a] evening of trick or treating.
-  I walked[v] down the street and rang[v] up to the first door. " trick[n] or treat" I said as the door began to open. " trick[n] or treat?" a woman[n] said on the
-  other side of the door. "What does that mean?" "It means if you don't give me a treat I'll have to trick[v] you." she said as she agressively[a] closed[v]
-  out the door and I walked[v] down the street. I only wanted a candy[n]!`;
-  console.log(  parseStory(story))
+  showStoryEditView(parseStory(story))
