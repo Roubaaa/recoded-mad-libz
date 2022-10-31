@@ -1,13 +1,30 @@
 /**
  * Your CSS goes here.
  */
- body {
-   width :100%;
-   margin:0%;
-   
+ input {
+  background: white;  
+  border-radius: 8px;
+  border-bottom-right-radius: 0px;
+  position: relative;
+  top: 13px
+}
+input:focus {
+  background: rgb(255, 211, 211);
+  scale: 1.1;
+}
+input , p {
+  float: left;
+  height: 15px;
+  width: fit-content;
+  margin-right: 4px;
+}
+body {
+  width :100%;
+  margin:0%;
+  
 
-  }
- 
+ }
+
 .firstSection{
 background-color: rgb(0, 0, 0) ;
 height: 500px;
@@ -18,15 +35,15 @@ justify-content: space-around;}
 
 
 h1 {
-   text-align: left;
-   text-shadow: 2px 2px  rgb(151, 51, 14);
-   color:  rgb(255, 71, 5);
-   font-family: fantasy;
-   font-size: 100px;
-   margin-left: 30px;
-   letter-spacing: 1px;
-   
-   }
+  text-align: left;
+  text-shadow: 2px 2px  rgb(151, 51, 14);
+  color:  rgb(255, 71, 5);
+  font-family: fantasy;
+  font-size: 100px;
+  margin-left: 30px;
+  letter-spacing: 1px;
+  
+  }
 .secondSection{
 background-color:  rgb(255, 71, 5);
 height: 500px;

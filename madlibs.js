@@ -68,16 +68,155 @@ function parseStory(rawStory) {
  *
  * You'll want to use the results of parseStory() to display the story on the page.
  */
-getRawStory()
-  .then(parseStory)
-  .then((processedStory) => {
-    console.log(processedStory);
-  });
+//getRawStory()
+//  .then(parseStory)
+//  .then((processedStory) => {
+//    console.log(processedStory);
+//  });
 
+  const story =`It is a scary[a] Halloween night. I have my ghost[n] costume on and I step outside to begin my adventurous[a] evening of trick or treating. I walked[v] down the street and rang[v] up to the first door. " trick[n] or treat" I said as the door began to open. " trick[n] or treat?" a woman[n] said on the other side of the door. "What does that mean?" "It means if you don't give me a treat I'll have to trick[v] you." she said as she agressively[a] closed[v] out the door and I walked[v] down the street. I only wanted a candy[n]!`;
+  const story2 = `Louis[n]  went[v] to the store[n], and it was fun[a]. He taught[v] the class[n].`
+  function showStoryEditView(parsedStory){
+    // this function will recive an array of objects that contains the words with their pos as a parameter
+    //we will go throw each object and show it on HTML Page using p element, whenever we find an object with pos we will add input element
+    let editView = document.getElementById("madLibsEdit")
+    let preview = document.getElementById("madLibsPreview")
+    let counterId = 0
+    parsedStory.forEach(element => {
+      if(element["pos"] == "verb"){
+        const input = document.createElement("input")
+        const output = document.createElement("p")
+        input.id = counterId
 
+        input.placeholder = "verb"
+        output.textContent = "(verb)"
+        output.style.color = "gray"
+        input.maxLength = 20
 
-  const story =`It is a scary[a] Halloween night. I have my ghost[n] costume on and I step outside to begin my adventurous[a] evening of trick or treating.
-  I walked[v] down the street and rang[v] up to the first door. " trick[n] or treat" I said as the door began to open. " trick[n] or treat?" a woman[n] said on the
-  other side of the door. "What does that mean?" "It means if you don't give me a treat I'll have to trick[v] you." she said as she agressively[a] closed[v]
-  out the door and I walked[v] down the street. I only wanted a candy[n]!`;
-  console.log(  parseStory(story))
+        let prevValue = localStorage.getItem(`verb ${counterId}`)
+        if(prevValue != null){
+          input.value = prevValue
+          output.textContent = prevValue
+          output.style.color = "#0059d6"
+        }
+        editView.appendChild(input)
+        preview.appendChild(output)
+        input.addEventListener("input", (event) => {
+          input.style.backgroundColor = "#f2ffff"
+          output.textContent = input.value;
+          output.style.color = "blue"
+        });
+        input.addEventListener("focus", (event)=>{
+          input.style.backgroundColor = "#ffd3d3"
+          input.style.scale= 1.1
+        })
+        input.addEventListener("focusout",(event)=>{
+          input.style.scale = 1
+          if(input.value.length === 0) {
+            input.style.backgroundColor = "#ffe6e6"
+            output.style.color = "gray"
+            output.textContent = "(verb)"
+          }
+          else {
+            input.style.backgroundColor = "#e6f4ff"
+            output.style.color = "#0059d6"
+            localStorage.setItem(`verb ${input.id}`, `${input.value}`)
+          }
+        })
+        counterId++
+      }
+      else if(element["pos"] == "noun"){
+        const input = document.createElement("input")
+        const output = document.createElement("p")
+        input.id = counterId
+        input.placeholder = "noun"
+        output.textContent = "(noun)"
+        input.maxLength = 20
+
+        let prevValue = localStorage.getItem(`noun ${counterId}`)
+        if(prevValue != null){
+          input.value = prevValue
+          output.textContent = prevValue
+          output.style.color = "#0059d6"
+        }
+        output.style.color = "gray"
+        editView.appendChild(input)
+        preview.appendChild(output)
+        input.addEventListener("input", (event) => {
+          input.style.backgroundColor = "#f2ffff"
+          output.textContent = input.value;
+          output.style.color = "blue"
+        });
+        input.addEventListener("focus", (event)=>{
+          input.style.backgroundColor = "#ffd3d3"
+          input.style.scale= 1.1
+        })
+        input.addEventListener("focusout",(event)=>{
+          input.style.scale = 1
+          if(input.value.length === 0) {
+            input.style.backgroundColor = "#ffe6e6"
+            output.style.color = "gray"
+            output.textContent = "(noun)"
+          }
+          else {
+            input.style.backgroundColor = "#e6f4ff"
+            output.style.color = "#0059d6"
+            localStorage.setItem(`noun ${input.id}`, `${input.value}`)
+          }
+        })
+        counterId++
+      }      
+      else if(element["pos"] == "adjective"){
+        const input = document.createElement("input")
+        const output = document.createElement("p")
+        input.id = counterId
+        input.placeholder = "adjective"
+        output.textContent = "(adjective)"
+        input.maxLength = 20
+
+        let prevValue = localStorage.getItem(`adjective ${counterId}`)
+        if(prevValue != null){
+          input.value = prevValue
+          output.textContent = prevValue
+          output.style.color = "#0059d6"
+        }
+        output.style.color = "gray"
+        editView.appendChild(input)
+        preview.appendChild(output)
+        input.addEventListener("input", (event) => {
+          input.style.backgroundColor = "#f2ffff"
+          output.textContent = input.value;
+          output.style.color = "blue"
+        });
+        input.addEventListener("focus", (event)=>{
+          input.style.backgroundColor = "#ffd3d3"
+          input.style.scale= 1.1
+        })
+        input.addEventListener("focusout",(event)=>{
+          input.style.scale = 1
+          if(input.value.length === 0) {
+            input.style.backgroundColor = "#ffe6e6"
+            output.style.color = "gray"
+            output.textContent = "(adjective)"
+          }
+          else {
+            input.style.backgroundColor = "#e6f4ff"
+            output.style.color = "#0059d6"
+            localStorage.setItem(`adjective ${input.id}`, `${input.value}`)
+          }
+        })
+        counterId++
+      }   
+      else{
+        const word = document.createElement("p")
+        const word2 = document.createElement("p")
+        word.textContent = element["word"]
+        word2.textContent = element["word"]
+        preview.appendChild(word2)
+        editView.appendChild(word)
+      }
+    });
+
+  }
+
+  showStoryEditView(parseStory(story))
