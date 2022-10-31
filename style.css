@@ -10,12 +10,12 @@
 }
 input:focus {
   background: rgb(255, 211, 211);
-  scale: 1.1;
+  scale: 1.1px;
 }
 input , p {
   float: left;
   height: 15px;
-  width: fit-content;
+  width: 100%;
   margin-right: 4px;
 }
 body {
@@ -47,6 +47,9 @@ h1 {
 .secondSection{
 background-color:  rgb(255, 71, 5);
 height: 500px;
+display:flex;
+flex-direction:column;
+
 }
 
 .teamMembers {
