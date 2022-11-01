@@ -5,35 +5,56 @@
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="welcomeMsg.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
+    <div class="main">
+
    <div class="firstSection">
+    
     <div class="title">
     <br>
-    <h1>Happy <br> Halloween</h1>
+    <h1>Happy Halloween</h1>
    </div>
+   <div class="clouds cloud1">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="clouds cloud2">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="clouds cloud3">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="clouds cloud4">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="clouds cloud5">
+    <div></div>
+    <div></div>
+  </div>
+
    <div class="picture">
-    <img src="images/castle 2.png" alt="castle" width="450px" height="450px">
+     <img id="p1" src="images/house.png" style="position:relative; left: 150px; scale:1.2; top: 170px;">
    </div>
    </div>
 
    <div class="secondSection">
     <br>
       <img src="images/witch-g671c37375_1280.png" alt="witch" width ="150px" height="100px">
-  
     <div class='madLibsEdit'>
     </div>
-
-    <div id='madLibsPreview' style=" float:left ;width:fit-content; background-color: rgb(255, 255, 190); margin:10px;">
+    <form id="myForm" style=" float:left ;width:fit-content; background-color: rgba(255, 255, 190, 0.47); margin:10px;border-radius: 15px;">
+    </form>
+    <div id='madLibsPreview' style=" float:left ;width:fit-content; background-color: rgba(255, 255, 190, 0.47); margin:10px; border-radius: 15px;">
     </div>
   </div>
-
-    
+  </div>
 </div>
-    <div class="teamMembers">
-    
-    </div>
     <script src="do-not-touch.js"></script>
     <script src="madlibs.js"></script>
   </body>
